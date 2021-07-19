@@ -40,8 +40,34 @@
             <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="#" @click="logout" class="nav-link">Salir</a>
+
+        </li>
+
     
         </ul>
     </nav>
   <!-- /.navbar -->
 </template>
+<script>
+import { Link } from '@inertiajs/inertia-vue3'
+import axios from 'axios'
+
+export default {
+    components:{
+        Link
+    },
+    methods:{
+        logout(){
+            axios.post(route('logout'), {})
+            .then(function (response) {
+                location.href = route('login')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+}
+</script>

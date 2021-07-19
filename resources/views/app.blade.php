@@ -22,6 +22,7 @@
     <link href="{{ asset('plugins/fontawesome/css/all.min.css') }}" rel="stylesheet">
     <script>
         const assetp = "{{ asset('') }}";
+        const token = "{{ csrf_token() }}";
     </script>
 
     @routes

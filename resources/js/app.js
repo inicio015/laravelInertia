@@ -1,17 +1,21 @@
 require('./bootstrap');
 import { createApp, h } from 'vue'
-import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress'
+import { createInertiaApp } from '@inertiajs/inertia-vue3'
 
-const el = document.getElementById('app')
 
 
-const app = createApp({
-    render: () => 
-    h(InertiaApp, {
-        initialPage: JSON.parse(el.dataset.page),
-        resolveComponent: (name) => require(`./Pages/${name}`).default,
-    }),
-}).mixin({ data(){return{assets:assetp}}, methods: { route,asset(){ return assetp } } }).use(InertiaPlugin).mount(el)
+if(document.getElementById('app')){
+  InertiaProgress.init()
 
-InertiaProgress.init()
+  createInertiaApp({
+    resolve: name => require(`./Pages/${name}`),
+    title: title => title ? `${title} - Ping CRM` : 'Ping CRM',
+    setup({ el, App, props, plugin }) {
+      createApp({ render: () => h(App, props) })
+        .use(plugin)
+        .mixin({ data(){return{assets:assetp}}, methods: { route,asset(){ return assetp } } })
+        .mount(el)
+    },
+  })
+}

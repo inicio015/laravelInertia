@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    {{-- Inertia --}}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=smoothscroll,NodeList.prototype.forEach,Promise,Object.values,Object.assign" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,6 +28,7 @@
         const token = "{{ csrf_token() }}";
     </script>
 
+  
     @routes
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -1,8 +1,6 @@
 <template>
-    <app-layaout>
-        <h1>Hello World Pruebas</h1>
-          You are logged in as: {{ user.name }}
-    </app-layaout>
+    <h1>Hello World Pruebas</h1>
+      You are logged in as: {{ user.name }}
 </template>
 <script>
 import { computed } from 'vue'
@@ -12,6 +10,7 @@ export default {
   components:{
       AppLayaout
   },
+  layout: AppLayaout,
   setup() {
     const user = computed(() => usePage().props.value.auth.user)
     return { user }
